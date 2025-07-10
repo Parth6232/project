@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    hello world
+    <input type="submit" value="change color" id="submit">
+
+    <input type="range" id="range">
 </body>
 </html>
+<script>
+    function random(num) {
+      return Math.floor( Math.random()*(num+1));
+    }
+    const submit=document.querySelector("#submit");
+    submit.addEventListener("click",()=>{
+        const randomcolor=`rgb(${random(255)} ${random(255)} ${random(255)})`;
+        document.body.style.background=randomcolor;
+    })
+
+    const range=document.getElementById("range");
+    const ptag=document.createElement("p");
+    range.addEventListener("input",(e)=>{
+       e.preventDefault();
+       ptag .innerText=range.value;
+       document.body.appendChild(ptag)
+    })
+</script>
